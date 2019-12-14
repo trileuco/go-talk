@@ -3,7 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"math/rand"
+	"sync"
 	"time"
 )
 
@@ -28,6 +30,9 @@ func main() {
 	}()
 
 	ctx, cancel := context.WithCancel(context.Background())
+
+	wg := sync.WaitGroup{}
+	wg.Add(1)
 	// consumer will wait 5 seconds for context cancel
 	go func() {
 		consuming := true
@@ -39,11 +44,16 @@ func main() {
 				fmt.Println(name)
 			case <-ctx.Done():
 				consuming = false
+				wg.Done()
+				log.Print("select terminated")
 			}
 			time.Sleep(1 * time.Second)
 		}
 	}()
-
+	// Will block main execution until timer ends
 	<-time.After(3 * time.Second)
 	cancel()
+	// Will wait to select proper shutdown
+	log.Print("Context cancelled, waiting for select termination")
+	wg.Wait()
 }
