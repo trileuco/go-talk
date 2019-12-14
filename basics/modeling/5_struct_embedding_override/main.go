@@ -11,7 +11,7 @@ type Rectangle struct {
 }
 
 func (r Rectangle) Area() float64 {
-	fmt.Println("Used parent Area method")
+	fmt.Println("Used embedded struct Area method")
 	return r.Base * r.Height
 }
 
@@ -20,7 +20,7 @@ type Square struct {
 }
 
 func (s Square) Area() float64 {
-	fmt.Println("Used parent Area method")
+	fmt.Println("Used embedding struct Area method")
 	return math.Pow(s.Base, 2)
 }
 
