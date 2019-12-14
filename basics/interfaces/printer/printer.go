@@ -2,11 +2,14 @@ package printer
 
 import (
 	"fmt"
-	"github.com/trileuco/go-talk/basic/interfaces/format"
 )
 
-func PrintMessage(msg string, formatters []format.Formatter) {
-	for _, f := range formatters {
-		fmt.Println(f.Format(msg))
+type Converter interface {
+	Apply(msg string) string
+}
+
+func PrintMessage(text string, converters []Converter) {
+	for _, f := range converters {
+		fmt.Println(f.Apply(text))
 	}
 }
