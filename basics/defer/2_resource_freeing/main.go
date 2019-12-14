@@ -18,9 +18,9 @@ func getIp() (string, error) {
 
 	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return "", err
+		return "", err // Without defer , we need to free resources here
 	}
-	return string(data), nil
+	return string(data), nil // Without defer , we need to free resources here
 }
 
 func main() {
