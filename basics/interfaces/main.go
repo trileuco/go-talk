@@ -8,14 +8,14 @@ import (
 
 func main() {
 
-	upperCase := conversion.UpperCaseConverter{}
-	lowerCase := conversion.LowerCaseConverter{}
+	upperCaseConverter := conversion.UpperCaseConverter{}
+	lowerCaseConverter := conversion.LowerCaseConverter{}
 	spacesFormatter := formatter.SpacesFormatter{}
 
-	converters := []printer.Converter{
-		upperCase,
-		lowerCase,
+	textModifiers := []printer.TextModifier{
+		upperCaseConverter,
+		lowerCaseConverter,
 		spacesFormatter,
 	}
-	printer.PrintMessage("Hello !", converters)
+	printer.PrintMessage("Hello !", textModifiers)
 }

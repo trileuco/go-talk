@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-type Converter interface {
+type TextModifier interface {
 	Apply(msg string) string
 }
 
-func PrintMessage(text string, converters []Converter) {
-	for _, f := range converters {
+func PrintMessage(text string, textModifiers []TextModifier) {
+	for _, f := range textModifiers {
 		fmt.Println(f.Apply(text))
 	}
 }
