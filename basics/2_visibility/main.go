@@ -6,5 +6,5 @@ import (
 
 func main() {
 	greets.SayHello()
-	// greets.printGreet() // compile error
+	//greets.printGreet() // compile error
 }

@@ -44,8 +44,8 @@ func main() {
 				fmt.Println(name)
 			case <-ctx.Done():
 				consuming = false
-				wg.Done()
 				log.Print("select terminated")
+				wg.Done()
 			}
 			time.Sleep(1 * time.Second)
 		}

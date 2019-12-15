@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	_ "net/http/pprof"
 	"sync"
 	"time"
 )
