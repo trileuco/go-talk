@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 )
@@ -21,9 +19,8 @@ func main() {
 	}
 	defer f2.Close()
 	m := io.MultiReader(f1, f2)
-	d, err := ioutil.ReadAll(m)
+	_, err = io.Copy(os.Stdout, m)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(string(d))
 }
