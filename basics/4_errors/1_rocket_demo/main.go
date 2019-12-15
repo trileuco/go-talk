@@ -7,9 +7,9 @@ import (
 )
 
 type Rocket struct {
-	fuel        int
-	engine      bool
-	temperature int
+	fuel         int
+	engineStatus bool
+	temperature  int
 }
 
 func NewRocket(fuel int, temperature int) *Rocket {
@@ -39,7 +39,7 @@ func (r Rocket) initEngine() error {
 	if r.fuel < 1 {
 		return errors.New("Cannot start without fuel")
 	}
-	r.engine = true
+	r.engineStatus = true
 	return nil
 }
 
