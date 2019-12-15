@@ -27,10 +27,10 @@ func (r Rocket) Start() error {
 }
 
 func (r Rocket) checkTemperature() error {
-	const MaxTemperature = 100
-	if r.temperature > MaxTemperature {
-		msg := "temperature warning ! %v is higher than the limit %v !"
-		return errors.New(fmt.Sprintf(msg, r.temperature, MaxTemperature))
+	const RecommendedTemperature = 100
+	if r.temperature > RecommendedTemperature {
+		msg := "temperature warning ! %v is higher than the recommended %v !"
+		return errors.New(fmt.Sprintf(msg, r.temperature, RecommendedTemperature))
 	}
 	return nil
 }
